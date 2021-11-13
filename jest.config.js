@@ -9,10 +9,6 @@ module.exports = {
       {
         experimentalDecorators: true,
         emitDecoratorMetadata: true,
-        react: {
-          pragma: 'h',
-          pragmaFrag: 'Fragment',
-        },
       },
     ],
   },

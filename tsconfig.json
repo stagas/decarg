@@ -1,7 +1,6 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
   "include": [
-    "benchmark",
     "example",
     "src"
   ],
@@ -21,9 +20,6 @@
     "sourceMap": true,
     "module": "commonjs",
     "target": "esnext",
-    "jsx": "react",
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment",
     "strict": true
   }
 }

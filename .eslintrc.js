@@ -8,19 +8,9 @@ module.exports = {
     ecmaVersion: 2021,
     sourceType: 'module',
   },
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-  ],
+  extends: ['plugin:@typescript-eslint/recommended'],
   ignorePatterns: ['dist', 'node_modules'],
   plugins: ['import'],
-  settings: {
-    react: {
-      pragma: 'h',
-      fragment: 'Fragment',
-      version: '17',
-    },
-  },
   rules: {
     '@typescript-eslint/no-extra-semi': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
