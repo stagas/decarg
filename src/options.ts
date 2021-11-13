@@ -3,7 +3,7 @@ import {
   OptionExpectedValueError,
   OptionInvalidValueError,
 } from './errors'
-import path from 'path'
+import * as path from 'path'
 import { strip, isLong } from './util'
 import { getArg, Arg } from './arg'
 

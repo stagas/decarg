@@ -19,8 +19,8 @@ export const getArg = <T>(target: T, property: string) => {
   if (!description) return
 
   const type =
-    Reflect.getMetadata('design:type', target, property) ??
-    Object.getOwnPropertyDescriptor(target, property)!.value.constructor
+    Object.getOwnPropertyDescriptor(target, property)?.value?.constructor ??
+    Reflect.getMetadata('design:type', target, property)
 
   return { target, property, description, type } as Arg<T>
 }
