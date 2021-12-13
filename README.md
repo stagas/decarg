@@ -77,24 +77,24 @@ const options = decarg(new Options())
 
 ### decarg
 
-[src/index.ts:17-31](https://github.com/stagas/decarg/blob/9fc7dcc7f721f2dfc4857c582199d0dbe9a32af4/src/index.ts#L17-L31 "Source code on GitHub")
+[src/index.ts:17-31](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/index.ts#L17-L31 "Source code on GitHub")
 
 Process an options object and handle errors.
 
 #### Parameters
 
 *   `target` **T** The decorated options object.
-*   `argv`  Arguments values. (optional, default `process.argv.slice(1)`)
-*   `overrides` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+*   `argv`  Arguments values.&#x20;(optional, default `process.argv.slice(1)`)
+*   `overrides` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** &#x20;(optional, default `{}`)
 
-    *   `overrides.exit`  The exit function to use. (optional, default `process.exit`)
-    *   `overrides.log`  The log function to use. (optional, default `console.error`)
+    *   `overrides.exit`  The exit function to use.&#x20;(optional, default `process.exit`)
+    *   `overrides.log`  The log function to use.&#x20;(optional, default `console.error`)
 
 Returns **any** The populated options object when successful, otherwise prints help and exits.
 
 ### parse
 
-[src/parse.ts:17-81](https://github.com/stagas/decarg/blob/9fc7dcc7f721f2dfc4857c582199d0dbe9a32af4/src/parse.ts#L17-L81 "Source code on GitHub")
+[src/parse.ts:17-81](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/parse.ts#L17-L81 "Source code on GitHub")
 
 Process an options object and throw errors so that they can be
 managed manually.
@@ -102,7 +102,7 @@ managed manually.
 #### Parameters
 
 *   `target` **T** The decorated options object.
-*   `argv`  Arguments values. (optional, default `process.argv.slice(1)`)
+*   `argv`  Arguments values.&#x20;(optional, default `process.argv.slice(1)`)
 
 <!---->
 
@@ -118,7 +118,7 @@ Returns **any** The populated options object when successful, otherwise throws.
 
 #### OptionValidationError
 
-[src/errors.ts:8-13](https://github.com/stagas/decarg/blob/9fc7dcc7f721f2dfc4857c582199d0dbe9a32af4/src/errors.ts#L8-L13 "Source code on GitHub")
+[src/errors.ts:8-13](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/errors.ts#L8-L13 "Source code on GitHub")
 
 **Extends Error**
 
@@ -128,11 +128,11 @@ Thrown when the arguments input was somehow invalid.
 
 ##### Parameters
 
-*   `message` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `message` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
 #### OptionExpectedValueError
 
-[src/errors.ts:20-27](https://github.com/stagas/decarg/blob/9fc7dcc7f721f2dfc4857c582199d0dbe9a32af4/src/errors.ts#L20-L27 "Source code on GitHub")
+[src/errors.ts:20-27](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/errors.ts#L20-L27 "Source code on GitHub")
 
 **Extends OptionValidationError**
 
@@ -142,11 +142,11 @@ Thrown when an argument expects a value and it was not given.
 
 ##### Parameters
 
-*   `option` **[Option](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/Option)\<T>** 
+*   `option` **[Option](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/Option)\<T>**&#x20;
 
 #### OptionInvalidValueError
 
-[src/errors.ts:35-42](https://github.com/stagas/decarg/blob/9fc7dcc7f721f2dfc4857c582199d0dbe9a32af4/src/errors.ts#L35-L42 "Source code on GitHub")
+[src/errors.ts:35-42](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/errors.ts#L35-L42 "Source code on GitHub")
 
 **Extends OptionValidationError**
 
@@ -157,12 +157,12 @@ choices argument or not a number when a Number argument.
 
 ##### Parameters
 
-*   `option` **[Option](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/Option)\<T>** 
-*   `value` **any** 
+*   `option` **[Option](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/Option)\<T>**&#x20;
+*   `value` **any**&#x20;
 
 #### OptionHelpRequested
 
-[src/errors.ts:49-54](https://github.com/stagas/decarg/blob/9fc7dcc7f721f2dfc4857c582199d0dbe9a32af4/src/errors.ts#L49-L54 "Source code on GitHub")
+[src/errors.ts:49-54](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/errors.ts#L49-L54 "Source code on GitHub")
 
 **Extends Error**
 
@@ -172,7 +172,7 @@ Not an error per se, but thrown anyway when `--help` is passed in the arguments.
 
 ##### Parameters
 
-*   `options` **Options\<T>** 
+*   `options` **Options\<T>**&#x20;
 
 ## Notes
 
