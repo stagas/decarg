@@ -56,24 +56,24 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@swc-node/jest": "^1.4.0",
+    "@stagas/documentation-fork": "^13.2.5",
+    "@swc-node/jest": "^1.4.1",
     "@swc-node/register": "^1.4.0",
     "@tsconfig/node16": "^1.0.2",
-    "@types/jest": "^27.0.2",
-    "@types/node": "^16.11.7",
-    "@typescript-eslint/eslint-plugin": "^5.3.1",
-    "@typescript-eslint/parser": "^5.3.1",
-    "documentation": "^13.2.5",
-    "eslint": "^8.2.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.12",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "eslint": "^8.4.1",
     "eslint-plugin-import": "^2.25.3",
     "fpick": "^1.1.0",
     "husky": "^7.0.4",
-    "jest": "^27.3.1",
+    "jest": "^27.4.4",
     "onchange": "^7.1.0",
-    "prettier": "^2.4.1",
+    "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
-    "typescript": "^4.4.4"
+    "typescript": "^4.5.3"
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13"
