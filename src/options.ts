@@ -179,7 +179,13 @@ export class Options<T> {
       out.push('\x1b[1mExamples:\x1b[0m')
       for (const cmd in this.examples) {
         out.push('\x1b[90m  # ' + this.examples[cmd] + '\x1b[0m')
-        out.push('  ' + this.exec + ' ' + cmd, '')
+        out.push(
+          '  ' +
+            (cmd.includes('$')
+              ? cmd.replace('$', this.exec)
+              : this.exec + ' ' + cmd),
+          '',
+        )
       }
     }
 

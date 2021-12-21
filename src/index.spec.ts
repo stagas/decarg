@@ -615,6 +615,7 @@ describe('parse()', () => {
       static examples = {
         one: 'One example',
         '-f two': 'Two example',
+        'pipe | $ > something': 'Pipe stdin',
       }
     }
     let error: Error
@@ -628,6 +629,7 @@ describe('parse()', () => {
     expect(output).toContain('One example')
     expect(output).toContain('exec -f two')
     expect(output).toContain('Two example')
+    expect(output).toContain('pipe | exec > something')
   })
 
   it('ignores non decorated args', () => {
