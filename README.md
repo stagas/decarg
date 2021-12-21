@@ -77,7 +77,7 @@ const options = decarg(new Options())
 
 ### decarg
 
-[src/index.ts:17-31](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/index.ts#L17-L31 "Source code on GitHub")
+[src/index.ts:17-31](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/index.ts#L17-L31 "Source code on GitHub")
 
 Process an options object and handle errors.
 
@@ -94,7 +94,7 @@ Returns **any** The populated options object when successful, otherwise prints h
 
 ### parse
 
-[src/parse.ts:17-81](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/parse.ts#L17-L81 "Source code on GitHub")
+[src/parse.ts:17-81](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/parse.ts#L17-L81 "Source code on GitHub")
 
 Process an options object and throw errors so that they can be
 managed manually.
@@ -118,7 +118,7 @@ Returns **any** The populated options object when successful, otherwise throws.
 
 #### OptionValidationError
 
-[src/errors.ts:8-13](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/errors.ts#L8-L13 "Source code on GitHub")
+[src/errors.ts:8-13](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/errors.ts#L8-L13 "Source code on GitHub")
 
 **Extends Error**
 
@@ -132,7 +132,7 @@ Thrown when the arguments input was somehow invalid.
 
 #### OptionExpectedValueError
 
-[src/errors.ts:20-27](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/errors.ts#L20-L27 "Source code on GitHub")
+[src/errors.ts:20-27](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/errors.ts#L20-L27 "Source code on GitHub")
 
 **Extends OptionValidationError**
 
@@ -146,7 +146,7 @@ Thrown when an argument expects a value and it was not given.
 
 #### OptionInvalidValueError
 
-[src/errors.ts:35-42](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/errors.ts#L35-L42 "Source code on GitHub")
+[src/errors.ts:35-42](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/errors.ts#L35-L42 "Source code on GitHub")
 
 **Extends OptionValidationError**
 
@@ -162,7 +162,7 @@ choices argument or not a number when a Number argument.
 
 #### OptionHelpRequested
 
-[src/errors.ts:49-54](https://github.com/stagas/decarg/blob/2ce22de4992960a093af23ea43e0458169fac90f/src/errors.ts#L49-L54 "Source code on GitHub")
+[src/errors.ts:49-54](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/errors.ts#L49-L54 "Source code on GitHub")
 
 **Extends Error**
 
