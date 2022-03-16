@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { arg, parse, decarg } from './'
+import { arg, decarg, parse } from '../src'
 
 describe('parse()', () => {
   it('empty', () => {

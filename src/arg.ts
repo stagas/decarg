@@ -4,8 +4,7 @@ const A = Symbol.for('arg')
 
 type ArgDescription = (string | string[])[]
 
-export const arg = (...description: ArgDescription) =>
-  Reflect.metadata(A, description)
+export const arg = (...description: ArgDescription) => Reflect.metadata(A, description)
 
 export interface Arg<T> {
   target: T

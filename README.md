@@ -65,60 +65,22 @@ const options = decarg(new Options())
 
 #### Table of Contents
 
-*   [decarg](#decarg)
+*   [OptionValidationError](#optionvalidationerror)
     *   [Parameters](#parameters)
-*   [parse](#parse)
+*   [OptionExpectedValueError](#optionexpectedvalueerror)
     *   [Parameters](#parameters-1)
-*   [Errors](#errors)
-    *   [OptionValidationError](#optionvalidationerror)
-    *   [OptionExpectedValueError](#optionexpectedvalueerror)
-    *   [OptionInvalidValueError](#optioninvalidvalueerror)
-    *   [OptionHelpRequested](#optionhelprequested)
+*   [OptionInvalidValueError](#optioninvalidvalueerror)
+    *   [Parameters](#parameters-2)
+*   [OptionHelpRequested](#optionhelprequested)
+    *   [Parameters](#parameters-3)
+*   [decarg](#decarg)
+    *   [Parameters](#parameters-4)
+*   [parse](#parse)
+    *   [Parameters](#parameters-5)
 
-### decarg
+### OptionValidationError
 
-[src/index.ts:17-31](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/index.ts#L17-L31 "Source code on GitHub")
-
-Process an options object and handle errors.
-
-#### Parameters
-
-*   `target` **T** The decorated options object.
-*   `argv`  Arguments values.&#x20;(optional, default `process.argv.slice(1)`)
-*   `overrides` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** &#x20;(optional, default `{}`)
-
-    *   `overrides.exit`  The exit function to use.&#x20;(optional, default `process.exit`)
-    *   `overrides.log`  The log function to use.&#x20;(optional, default `console.error`)
-
-Returns **any** The populated options object when successful, otherwise prints help and exits.
-
-### parse
-
-[src/parse.ts:17-81](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/parse.ts#L17-L81 "Source code on GitHub")
-
-Process an options object and throw errors so that they can be
-managed manually.
-
-#### Parameters
-
-*   `target` **T** The decorated options object.
-*   `argv`  Arguments values.&#x20;(optional, default `process.argv.slice(1)`)
-
-<!---->
-
-*   Throws **any** An AggregateError with [OptionValidationError](#optionvalidationerror) when there are multiple errors
-    or an [OptionHelpRequested](#optionhelprequested) error.
-    The `.message` property can be printed and is the same as the managed version [decarg](#decarg).
-
-Returns **any** The populated options object when successful, otherwise throws.
-
-### Errors
-
-
-
-#### OptionValidationError
-
-[src/errors.ts:8-13](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/errors.ts#L8-L13 "Source code on GitHub")
+[src/errors.ts:8-13](https://github.com/stagas/decarg/blob/1ff879641d2ef440f787e13e94e2b77b0dc3b6b0/src/errors.ts#L8-L13 "Source code on GitHub")
 
 **Extends Error**
 
@@ -126,13 +88,13 @@ OptionValidationError.
 
 Thrown when the arguments input was somehow invalid.
 
-##### Parameters
+#### Parameters
 
 *   `message` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
-#### OptionExpectedValueError
+### OptionExpectedValueError
 
-[src/errors.ts:20-27](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/errors.ts#L20-L27 "Source code on GitHub")
+[src/errors.ts:20-27](https://github.com/stagas/decarg/blob/1ff879641d2ef440f787e13e94e2b77b0dc3b6b0/src/errors.ts#L20-L27 "Source code on GitHub")
 
 **Extends OptionValidationError**
 
@@ -140,13 +102,13 @@ OptionExpectedValueError.
 
 Thrown when an argument expects a value and it was not given.
 
-##### Parameters
+#### Parameters
 
 *   `option` **[Option](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/Option)\<T>**&#x20;
 
-#### OptionInvalidValueError
+### OptionInvalidValueError
 
-[src/errors.ts:35-42](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/errors.ts#L35-L42 "Source code on GitHub")
+[src/errors.ts:35-42](https://github.com/stagas/decarg/blob/1ff879641d2ef440f787e13e94e2b77b0dc3b6b0/src/errors.ts#L35-L42 "Source code on GitHub")
 
 **Extends OptionValidationError**
 
@@ -155,14 +117,14 @@ OptionInvalidValueError.
 Thrown when an invalid option was passed, i.e not in choices when a multiple
 choices argument or not a number when a Number argument.
 
-##### Parameters
+#### Parameters
 
 *   `option` **[Option](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/Option)\<T>**&#x20;
 *   `value` **any**&#x20;
 
-#### OptionHelpRequested
+### OptionHelpRequested
 
-[src/errors.ts:49-54](https://github.com/stagas/decarg/blob/c0290cbd4a07698637764348c1b7836129a34bfc/src/errors.ts#L49-L54 "Source code on GitHub")
+[src/errors.ts:49-54](https://github.com/stagas/decarg/blob/1ff879641d2ef440f787e13e94e2b77b0dc3b6b0/src/errors.ts#L49-L54 "Source code on GitHub")
 
 **Extends Error**
 
@@ -170,9 +132,46 @@ OptionHelpRequested.
 
 Not an error per se, but thrown anyway when `--help` is passed in the arguments.
 
-##### Parameters
+#### Parameters
 
 *   `options` **Options\<T>**&#x20;
+
+### decarg
+
+[src/index.ts:17-30](https://github.com/stagas/decarg/blob/1ff879641d2ef440f787e13e94e2b77b0dc3b6b0/src/index.ts#L17-L30 "Source code on GitHub")
+
+Process an options object and handle errors.
+
+#### Parameters
+
+*   `target` **T** The decorated options object.
+*   `argv`  Arguments values. (optional, default `process.argv.slice(1)`)
+*   `overrides` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+
+    *   `overrides.exit`  The exit function to use. (optional, default `process.exit`)
+    *   `overrides.log`  The log function to use. (optional, default `console.error`)
+
+Returns **any** The populated options object when successful, otherwise prints help and exits.
+
+### parse
+
+[src/parse.ts:17-81](https://github.com/stagas/decarg/blob/1ff879641d2ef440f787e13e94e2b77b0dc3b6b0/src/parse.ts#L17-L81 "Source code on GitHub")
+
+Process an options object and throw errors so that they can be
+managed manually.
+
+#### Parameters
+
+*   `target` **T** The decorated options object.
+*   `argv`  Arguments values. (optional, default `process.argv.slice(1)`)
+
+<!---->
+
+*   Throws **any** An AggregateError with [OptionValidationError](#optionvalidationerror) when there are multiple errors
+    or an [OptionHelpRequested](#optionhelprequested) error.
+    The `.message` property can be printed and is the same as the managed version [decarg](#decarg).
+
+Returns **any** The populated options object when successful, otherwise throws.
 
 ## Notes
 

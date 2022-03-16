@@ -17,14 +17,13 @@ export { parse }
 export const decarg = <T>(
   target: T,
   argv = process.argv.slice(1),
-  { exit = process.exit, log = console.error } = {},
+  { exit = process.exit, log = console.error } = {}
 ) => {
   try {
     return parse(target, argv)
   } catch (error) {
     const e = error as AggregateError
-    if (e.errors)
-      log('\x1b[31m' + e.errors.map(e => e.message).join('\n\n'), '\x1b[0m\n')
+    if (e.errors) log('\x1b[31m' + e.errors.map(e => e.message).join('\n\n'), '\x1b[0m\n')
     log(e.message)
     exit(1)
   }

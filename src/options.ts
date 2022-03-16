@@ -1,10 +1,6 @@
 import * as path from 'path'
 import { Arg, getArg } from './arg'
-import {
-  OptionExpectedValueError,
-  OptionInvalidValueError,
-  OptionValidationError,
-} from './errors'
+import { OptionExpectedValueError, OptionInvalidValueError, OptionValidationError } from './errors'
 import { isLong, strip } from './util'
 
 // help text spacings
@@ -28,8 +24,7 @@ export class Option<T> {
 
     const desc = arg.description.slice() as string[]
 
-    if (Array.isArray(desc.at(-1)))
-      this.choices = desc.pop()! as unknown as string[]
+    if (Array.isArray(desc.at(-1))) this.choices = desc.pop()! as unknown as string[]
 
     for (let i = 0; i < desc.length; i++) {
       const value = desc[i]
@@ -50,9 +45,7 @@ export class Option<T> {
       }
     }
 
-    this.defaultValue = this.arg.target[
-      this.arg.property as keyof T
-    ] as unknown as string
+    this.defaultValue = this.arg.target[this.arg.property as keyof T] as unknown as string
   }
 
   get id() {
@@ -68,11 +61,7 @@ export class Option<T> {
         : `${this.short ? '-' + this.short : ''}`.padStart(left) +
           (
             (this.long ? (this.short ? ', ' : '  ') + '--' + this.long : '') +
-            (this.arg.type === Boolean
-              ? ''
-              : this.arg.type === Number
-              ? '=n'
-              : '=...')
+            (this.arg.type === Boolean ? '' : this.arg.type === Number ? '=n' : '=...')
           ).padEnd(middle) +
           '  ' +
           this.text +
@@ -128,10 +117,7 @@ export class Options<T> {
 
     // gather decorated props from options object
     this.options = [
-      ...new Set([
-        ...Object.keys(target),
-        ...Object.keys(Object.getPrototypeOf(target)),
-      ]),
+      ...new Set([...Object.keys(target), ...Object.keys(Object.getPrototypeOf(target))]),
     ]
       .map(property => getArg(target, property))
       .filter(Boolean)
@@ -142,11 +128,9 @@ export class Options<T> {
       // @ts-ignore
       this.options
         .map(option =>
-          [option.short, option.long, option.rest && '--']
-            .filter(Boolean)
-            .map(key => [key, option]),
+          [option.short, option.long, option.rest && '--'].filter(Boolean).map(key => [key, option])
         )
-        .flat(),
+        .flat()
     )
 
     this.default = this.options.find(option => option.default)
@@ -175,7 +159,7 @@ export class Options<T> {
       ]
         .filter(Boolean)
         .join(' ')}`,
-      '',
+      ''
     )
 
     if (this.default) out.push(this.default.help)
@@ -183,8 +167,7 @@ export class Options<T> {
 
     if (this.default || this.rest) out.push('')
 
-    for (const opt of this.options)
-      if (!opt.default && !opt.rest) out.push(opt.help)
+    for (const opt of this.options) if (!opt.default && !opt.rest) out.push(opt.help)
     if (this.options.length) out.push('')
 
     if (this.examples) {
@@ -192,11 +175,8 @@ export class Options<T> {
       for (const cmd in this.examples) {
         out.push('\x1b[90m  # ' + this.examples[cmd] + '\x1b[0m')
         out.push(
-          '  ' +
-            (cmd.includes('$')
-              ? cmd.replace('$', this.exec)
-              : this.exec + ' ' + cmd),
-          '',
+          '  ' + (cmd.includes('$') ? cmd.replace('$', this.exec) : this.exec + ' ' + cmd),
+          ''
         )
       }
     }
