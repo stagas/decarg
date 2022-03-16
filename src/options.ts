@@ -1,11 +1,11 @@
+import * as path from 'path'
+import { Arg, getArg } from './arg'
 import {
-  OptionValidationError,
   OptionExpectedValueError,
   OptionInvalidValueError,
+  OptionValidationError,
 } from './errors'
-import * as path from 'path'
-import { strip, isLong } from './util'
-import { getArg, Arg } from './arg'
+import { isLong, strip } from './util'
 
 // help text spacings
 const left = 5
@@ -21,6 +21,7 @@ export class Option<T> {
   default?: string
 
   text?: string
+  defaultValue?: string
 
   constructor(arg: Arg<T>) {
     this.arg = arg
@@ -48,6 +49,10 @@ export class Option<T> {
         this.text = value
       }
     }
+
+    this.defaultValue = this.arg.target[
+      this.arg.property as keyof T
+    ] as unknown as string
   }
 
   get id() {
@@ -55,22 +60,29 @@ export class Option<T> {
   }
 
   get help() {
-    return this.default
-      ? this.default.padStart(left + middle) + '  ' + this.text
-      : this.rest
-      ? `-- ${this.rest}`.padStart(left + middle) + '  ' + this.text
-      : `${this.short ? '-' + this.short : ''}`.padStart(left) +
-        (
-          (this.long ? (this.short ? ', ' : '  ') + '--' + this.long : '') +
-          (this.arg.type === Boolean
-            ? ''
-            : this.arg.type === Number
-            ? '=n'
-            : '=...')
-        ).padEnd(middle) +
-        '  ' +
-        this.text +
-        (this.choices ? ' [' + this.choices.join(',') + ']' : '')
+    return (
+      (this.default
+        ? this.default.padStart(left + middle) + '  ' + this.text
+        : this.rest
+        ? `-- ${this.rest}`.padStart(left + middle) + '  ' + this.text
+        : `${this.short ? '-' + this.short : ''}`.padStart(left) +
+          (
+            (this.long ? (this.short ? ', ' : '  ') + '--' + this.long : '') +
+            (this.arg.type === Boolean
+              ? ''
+              : this.arg.type === Number
+              ? '=n'
+              : '=...')
+          ).padEnd(middle) +
+          '  ' +
+          this.text +
+          (this.choices ? ' [' + this.choices.join(',') + ']' : '')) +
+      (this.defaultValue != null &&
+      typeof this.defaultValue !== 'boolean' &&
+      this.defaultValue.toString().length
+        ? ` (${this.defaultValue})`
+        : '')
+    )
   }
 
   set(...values: (string | boolean)[]) {
