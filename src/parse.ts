@@ -1,6 +1,6 @@
-import { split, strip, isDefault, isLong } from './util'
-import { Options } from './options'
 import { OptionExpectedValueError, OptionHelpRequested } from './errors'
+import { Options } from './options'
+import { isDefault, isLong, split, strip } from './util'
 
 /**
  * Process an options object and throw errors so that they can be

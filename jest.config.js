@@ -1,5 +1,5 @@
 module.exports = {
-  testEnvironment: 'jsdom', // or node
+  testEnvironment: 'jsdom', // 'node'
   rootDir: '.',
   roots: ['<rootDir>/test/', '<rootDir>/src'],
   testMatch: ['**/*.spec.{js,jsx,ts,tsx}'],
@@ -7,28 +7,8 @@ module.exports = {
   coverageDirectory: '<rootDir>/coverage',
   collectCoverageFrom: ['src/**/*.{ts,tsx}'],
   coverageProvider: 'v8',
-  moduleNameMapper: {
-    'react\\/(jsx-runtime|jsx-dev-runtime)$': 'html-vdom/$1',
-  },
-
-  // enable this for real typescript builds (slow but accurate)
+  resolver: require.resolve('@stagas/jest-node-exports-resolver'),
   // preset: 'ts-jest',
-
-  // enable this for fast, correct sourcemaps but not all features supported
-  // transform: {
-  //   '\\.(js|jsx|ts|tsx)$': [
-  //     '@stagas/sucrase-jest-plugin',
-  //     {
-  //       jsxPragma: 'h',
-  //       jsxFragmentPragma: 'Fragment',
-  //       production: true,
-  //       disableESTransforms: true,
-  //     },
-  //   ],
-  // },
-
-  // enable this for fast, incorrect sourcemaps but more features supported
-
   transform: {
     '\\.(js|jsx|ts|tsx)$': [
       '@swc-node/jest',
@@ -48,7 +28,6 @@ module.exports = {
               useDefineForClassFields: true,
               react: {
                 runtime: 'automatic',
-                importSource: 'html-vdom',
               },
               hidden: {
                 jest: true,

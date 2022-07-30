@@ -58,17 +58,17 @@ export class Option<T> {
         ? this.default.padStart(left + middle) + '  ' + this.text
         : this.rest
         ? `-- ${this.rest}`.padStart(left + middle) + '  ' + this.text
-        : `${this.short ? '-' + this.short : ''}`.padStart(left) +
-          (
-            (this.long ? (this.short ? ', ' : '  ') + '--' + this.long : '') +
-            (this.arg.type === Boolean ? '' : this.arg.type === Number ? '=n' : '=...')
-          ).padEnd(middle) +
-          '  ' +
-          this.text +
-          (this.choices ? ' [' + this.choices.join(',') + ']' : '')) +
-      (this.defaultValue != null &&
-      typeof this.defaultValue !== 'boolean' &&
-      this.defaultValue.toString().length
+        : `${this.short ? '-' + this.short : ''}`.padStart(left)
+          + (
+            (this.long ? (this.short ? ', ' : '  ') + '--' + this.long : '')
+            + (this.arg.type === Boolean ? '' : this.arg.type === Number ? '=n' : '=...')
+          ).padEnd(middle)
+          + '  '
+          + this.text
+          + (this.choices ? ' [' + this.choices.join(',') + ']' : ''))
+      + (this.defaultValue != null
+          && typeof this.defaultValue !== 'boolean'
+          && this.defaultValue.toString().length
         ? ` (${this.defaultValue})`
         : '')
     )
@@ -127,9 +127,7 @@ export class Options<T> {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       this.options
-        .map(option =>
-          [option.short, option.long, option.rest && '--'].filter(Boolean).map(key => [key, option])
-        )
+        .map(option => [option.short, option.long, option.rest && '--'].filter(Boolean).map(key => [key, option]))
         .flat()
     )
 
@@ -152,13 +150,15 @@ export class Options<T> {
     const out = []
 
     out.push(
-      `\x1b[1mUsage:\x1b[0m ${this.exec} ${[
-        this.options.length && '[options]',
-        this.default?.default,
-        this.find('--')?.rest && '-- ' + this.find('--')!.rest,
-      ]
-        .filter(Boolean)
-        .join(' ')}`,
+      `\x1b[1mUsage:\x1b[0m ${this.exec} ${
+        [
+          this.options.length && '[options]',
+          this.default?.default,
+          this.find('--')?.rest && '-- ' + this.find('--')!.rest,
+        ]
+          .filter(Boolean)
+          .join(' ')
+      }`,
       ''
     )
 

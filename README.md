@@ -13,7 +13,7 @@ decorator based cli arguments parser
  · <a href="https://github.com/stagas/decarg/issues">   🖐️ <strong>Help</strong></a>
 </p>
 
-***
+---
 
 ## Install
 
@@ -27,26 +27,19 @@ $ npm i decarg
 import { arg, decarg } from 'decarg'
 
 class Options {
-  @arg('<file> [<file>, ...]', 'Files to process')
-  file!: string[]
+  @arg('<file> [<file>, ...]', 'Files to process') file!: string[]
 
-  @arg('--', '[...rest]', 'The rest of the arguments')
-  passArgs = []
+  @arg('--', '[...rest]', 'The rest of the arguments') passArgs = []
 
-  @arg('-f', '--flag', 'Flag about something')
-  flag = false
+  @arg('-f', '--flag', 'Flag about something') flag = false
 
-  @arg('-c', '--count', 'How many times')
-  count = 42
+  @arg('-c', '--count', 'How many times') count = 42
 
-  @arg('-C', 'Choose color', ['blue', 'red', 'yellow'])
-  color = 'blue'
+  @arg('-C', 'Choose color', ['blue', 'red', 'yellow']) color = 'blue'
 
-  @arg('-s', '--string', 'Some string')
-  string = 'hmm'
+  @arg('-s', '--string', 'Some string') string = 'hmm'
 
-  @arg('--meh', 'Meh')
-  meh: string[] = []
+  @arg('--meh', 'Meh') meh: string[] = []
 
   static examples = {
     '-f foo': 'Convert foo by force',
@@ -65,18 +58,18 @@ const options = decarg(new Options())
 
 #### Table of Contents
 
-*   [OptionValidationError](#optionvalidationerror)
-    *   [Parameters](#parameters)
-*   [OptionExpectedValueError](#optionexpectedvalueerror)
-    *   [Parameters](#parameters-1)
-*   [OptionInvalidValueError](#optioninvalidvalueerror)
-    *   [Parameters](#parameters-2)
-*   [OptionHelpRequested](#optionhelprequested)
-    *   [Parameters](#parameters-3)
-*   [decarg](#decarg)
-    *   [Parameters](#parameters-4)
-*   [parse](#parse)
-    *   [Parameters](#parameters-5)
+- [OptionValidationError](#optionvalidationerror)
+  - [Parameters](#parameters)
+- [OptionExpectedValueError](#optionexpectedvalueerror)
+  - [Parameters](#parameters-1)
+- [OptionInvalidValueError](#optioninvalidvalueerror)
+  - [Parameters](#parameters-2)
+- [OptionHelpRequested](#optionhelprequested)
+  - [Parameters](#parameters-3)
+- [decarg](#decarg)
+  - [Parameters](#parameters-4)
+- [parse](#parse)
+  - [Parameters](#parameters-5)
 
 ### OptionValidationError
 
@@ -90,7 +83,7 @@ Thrown when the arguments input was somehow invalid.
 
 #### Parameters
 
-*   `message` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+- `message` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
 ### OptionExpectedValueError
 
@@ -104,7 +97,7 @@ Thrown when an argument expects a value and it was not given.
 
 #### Parameters
 
-*   `option` **[Option](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/Option)\<T>**&#x20;
+- `option` **[Option](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/Option)\<T>**&#x20;
 
 ### OptionInvalidValueError
 
@@ -119,8 +112,8 @@ choices argument or not a number when a Number argument.
 
 #### Parameters
 
-*   `option` **[Option](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/Option)\<T>**&#x20;
-*   `value` **any**&#x20;
+- `option` **[Option](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/Option)\<T>**&#x20;
+- `value` **any**&#x20;
 
 ### OptionHelpRequested
 
@@ -134,7 +127,7 @@ Not an error per se, but thrown anyway when `--help` is passed in the arguments.
 
 #### Parameters
 
-*   `options` **Options\<T>**&#x20;
+- `options` **Options\<T>**&#x20;
 
 ### decarg
 
@@ -144,12 +137,12 @@ Process an options object and handle errors.
 
 #### Parameters
 
-*   `target` **T** The decorated options object.
-*   `argv`  Arguments values. (optional, default `process.argv.slice(1)`)
-*   `overrides` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+- `target` **T** The decorated options object.
+- `argv` Arguments values. (optional, default `process.argv.slice(1)`)
+- `overrides` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** (optional, default `{}`)
 
-    *   `overrides.exit`  The exit function to use. (optional, default `process.exit`)
-    *   `overrides.log`  The log function to use. (optional, default `console.error`)
+  - `overrides.exit` The exit function to use. (optional, default `process.exit`)
+  - `overrides.log` The log function to use. (optional, default `console.error`)
 
 Returns **any** The populated options object when successful, otherwise prints help and exits.
 
@@ -162,14 +155,14 @@ managed manually.
 
 #### Parameters
 
-*   `target` **T** The decorated options object.
-*   `argv`  Arguments values. (optional, default `process.argv.slice(1)`)
+- `target` **T** The decorated options object.
+- `argv` Arguments values. (optional, default `process.argv.slice(1)`)
 
 <!---->
 
-*   Throws **any** An AggregateError with [OptionValidationError](#optionvalidationerror) when there are multiple errors
-    or an [OptionHelpRequested](#optionhelprequested) error.
-    The `.message` property can be printed and is the same as the managed version [decarg](#decarg).
+- Throws **any** An AggregateError with [OptionValidationError](#optionvalidationerror) when there are multiple errors
+  or an [OptionHelpRequested](#optionhelprequested) error.
+  The `.message` property can be printed and is the same as the managed version [decarg](#decarg).
 
 Returns **any** The populated options object when successful, otherwise throws.
 

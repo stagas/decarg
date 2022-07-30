@@ -22,8 +22,7 @@ describe('parse()', () => {
 
   it('-f --flag: pass none', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = false
+      @arg('-f', '--flag', 'Something') flag = false
     }
     const opts = parse(new Options(), ['exec'])
     expect(opts).toEqual({ flag: false })
@@ -31,8 +30,7 @@ describe('parse()', () => {
 
   it('-f --flag: -f', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = false
+      @arg('-f', '--flag', 'Something') flag = false
     }
     const opts = parse(new Options(), ['exec', '-f'])
     expect(opts).toEqual({ flag: true })
@@ -40,8 +38,7 @@ describe('parse()', () => {
 
   it('-f --flag: --flag', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = false
+      @arg('-f', '--flag', 'Something') flag = false
     }
     const opts = parse(new Options(), ['exec', '--flag'])
     expect(opts).toEqual({ flag: true })
@@ -49,8 +46,7 @@ describe('parse()', () => {
 
   it('-f --flag: --flag=true', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = false
+      @arg('-f', '--flag', 'Something') flag = false
     }
     const opts = parse(new Options(), ['exec', '--flag=true'])
     expect(opts).toEqual({ flag: true })
@@ -58,8 +54,7 @@ describe('parse()', () => {
 
   it('-f --flag: --flag=false', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = false
+      @arg('-f', '--flag', 'Something') flag = false
     }
     const opts = parse(new Options(), ['exec', '--flag=false'])
     expect(opts).toEqual({ flag: false })
@@ -67,8 +62,7 @@ describe('parse()', () => {
 
   it('-f --flag: --flag=xxx', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = false
+      @arg('-f', '--flag', 'Something') flag = false
     }
     const opts = parse(new Options(), ['exec', '--flag=xxx'])
     expect(opts).toEqual({ flag: false })
@@ -76,8 +70,7 @@ describe('parse()', () => {
 
   it('-f --flag: --flag=', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = true
+      @arg('-f', '--flag', 'Something') flag = true
     }
     const opts = parse(new Options(), ['exec', '--flag='])
     expect(opts).toEqual({ flag: false })
@@ -85,8 +78,7 @@ describe('parse()', () => {
 
   it('-f --flag no default', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag!: boolean
+      @arg('-f', '--flag', 'Something') flag!: boolean
     }
     let error: AggregateError
     try {
@@ -101,8 +93,7 @@ describe('parse()', () => {
 
   it('-f --flag no default: -f', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag!: boolean
+      @arg('-f', '--flag', 'Something') flag!: boolean
     }
     const opts = parse(new Options(), ['exec', '-f'])
     expect(opts).toEqual({ flag: true })
@@ -110,8 +101,7 @@ describe('parse()', () => {
 
   it('-f --flag no default: -f=', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag!: boolean
+      @arg('-f', '--flag', 'Something') flag!: boolean
     }
     const opts = parse(new Options(), ['exec', '-f='])
     expect(opts).toEqual({ flag: false })
@@ -119,8 +109,7 @@ describe('parse()', () => {
 
   it('-f --flag no default: -f=false', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag!: boolean
+      @arg('-f', '--flag', 'Something') flag!: boolean
     }
     const opts = parse(new Options(), ['exec', '-f=false'])
     expect(opts).toEqual({ flag: false })
@@ -128,14 +117,11 @@ describe('parse()', () => {
 
   it('-fGk: -fGk', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = false
+      @arg('-f', '--flag', 'Something') flag = false
 
-      @arg('-G', '--Great', 'Great')
-      great = false
+      @arg('-G', '--Great', 'Great') great = false
 
-      @arg('-k', '--Kay', 'Kay')
-      kay = true
+      @arg('-k', '--Kay', 'Kay') kay = true
     }
     const opts = parse(new Options(), ['exec', '-fGk'])
     expect(opts).toEqual({ flag: true, great: true, kay: true })
@@ -143,14 +129,11 @@ describe('parse()', () => {
 
   it('-fGk: -fGk=hello', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = false
+      @arg('-f', '--flag', 'Something') flag = false
 
-      @arg('-G', '--Great', 'Great')
-      great = false
+      @arg('-G', '--Great', 'Great') great = false
 
-      @arg('-k', '--Kay', 'Kay')
-      kay!: string
+      @arg('-k', '--Kay', 'Kay') kay!: string
     }
     const opts = parse(new Options(), ['exec', '-fGk=hello'])
     expect(opts).toEqual({ flag: true, great: true, kay: 'hello' })
@@ -158,14 +141,11 @@ describe('parse()', () => {
 
   it('-fGk: -fGk hello', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = false
+      @arg('-f', '--flag', 'Something') flag = false
 
-      @arg('-G', '--Great', 'Great')
-      great = false
+      @arg('-G', '--Great', 'Great') great = false
 
-      @arg('-k', '--Kay', 'Kay')
-      kay!: string
+      @arg('-k', '--Kay', 'Kay') kay!: string
     }
     const opts = parse(new Options(), ['exec', '-fGk', 'hello'])
     expect(opts).toEqual({ flag: true, great: true, kay: 'hello' })
@@ -173,14 +153,11 @@ describe('parse()', () => {
 
   it('-fGk: -fGk (none)', () => {
     class Options {
-      @arg('-f', '--flag', 'Something')
-      flag = false
+      @arg('-f', '--flag', 'Something') flag = false
 
-      @arg('-G', '--Great', 'Great')
-      great = false
+      @arg('-G', '--Great', 'Great') great = false
 
-      @arg('-k', '--Kay', 'Kay')
-      kay!: string
+      @arg('-k', '--Kay', 'Kay') kay!: string
     }
 
     let error: AggregateError
@@ -196,8 +173,7 @@ describe('parse()', () => {
 
   it('--flag: --flag', () => {
     class Options {
-      @arg('--flag', 'Something')
-      flag = false
+      @arg('--flag', 'Something') flag = false
     }
     const opts = parse(new Options(), ['exec', '--flag'])
     expect(opts).toEqual({ flag: true })
@@ -205,8 +181,7 @@ describe('parse()', () => {
 
   it('-n, --number: --number', () => {
     class Options {
-      @arg('-n', '--number', 'Number')
-      number!: number
+      @arg('-n', '--number', 'Number') number!: number
     }
     let error: AggregateError
     try {
@@ -221,8 +196,7 @@ describe('parse()', () => {
 
   it('-n, --number: --number=42', () => {
     class Options {
-      @arg('-n', '--number', 'Number')
-      number!: number
+      @arg('-n', '--number', 'Number') number!: number
     }
     const opts = parse(new Options(), ['exec', '--number=42'])
     expect(opts).toEqual({ number: 42 })
@@ -230,8 +204,7 @@ describe('parse()', () => {
 
   it('-n, --number: --number=invalid', () => {
     class Options {
-      @arg('-n', '--number', 'Number')
-      number!: number
+      @arg('-n', '--number', 'Number') number!: number
     }
     let error: AggregateError
     try {
@@ -246,8 +219,7 @@ describe('parse()', () => {
 
   it('-x non existant', () => {
     class Options {
-      @arg('-n', '--number', 'Number')
-      number = 42
+      @arg('-n', '--number', 'Number') number = 42
     }
     const opts = parse(new Options(), ['exec', '-x'])
     expect(opts).toEqual({ number: 42 })
@@ -255,8 +227,7 @@ describe('parse()', () => {
 
   it('-x=value non existant', () => {
     class Options {
-      @arg('-n', '--number', 'Number')
-      number = 42
+      @arg('-n', '--number', 'Number') number = 42
     }
     const opts = parse(new Options(), ['exec', '-x=value'])
     expect(opts).toEqual({ number: 42 })
@@ -264,8 +235,7 @@ describe('parse()', () => {
 
   it('-x value non existant', () => {
     class Options {
-      @arg('-n', '--number', 'Number')
-      number = 42
+      @arg('-n', '--number', 'Number') number = 42
     }
     const opts = parse(new Options(), ['exec', '-x', 'value'])
     expect(opts).toEqual({ number: 42 })
@@ -273,8 +243,7 @@ describe('parse()', () => {
 
   it('-n, --number: --number 42', () => {
     class Options {
-      @arg('-n', '--number', 'Number')
-      number!: number
+      @arg('-n', '--number', 'Number') number!: number
     }
     const opts = parse(new Options(), ['exec', '--number', '42'])
     expect(opts).toEqual({ number: 42 })
@@ -282,8 +251,7 @@ describe('parse()', () => {
 
   it('-s, --string: --string', () => {
     class Options {
-      @arg('-s', '--string', 'Something')
-      string = 'xxx'
+      @arg('-s', '--string', 'Something') string = 'xxx'
     }
     let error: AggregateError
     try {
@@ -298,8 +266,7 @@ describe('parse()', () => {
 
   it('-s: only short', () => {
     class Options {
-      @arg('-s', 'Something')
-      string = 'xxx'
+      @arg('-s', 'Something') string = 'xxx'
     }
     let error: AggregateError
     try {
@@ -314,8 +281,7 @@ describe('parse()', () => {
 
   it('-s, --string: --string=foo', () => {
     class Options {
-      @arg('-s', '--string', 'Something')
-      string = ''
+      @arg('-s', '--string', 'Something') string = ''
     }
     const opts = parse(new Options(), ['exec', '--string=foo'])
     expect(opts).toEqual({ string: 'foo' })
@@ -323,8 +289,7 @@ describe('parse()', () => {
 
   it('-s, --string: --string=foo bar', () => {
     class Options {
-      @arg('-s', '--string', 'Something')
-      string = ''
+      @arg('-s', '--string', 'Something') string = ''
     }
     const opts = parse(new Options(), ['exec', '--string=foo bar'])
     expect(opts).toEqual({ string: 'foo bar' })
@@ -332,8 +297,7 @@ describe('parse()', () => {
 
   it('-s, --string: -s=foo bar', () => {
     class Options {
-      @arg('-s', '--string', 'Something')
-      string = ''
+      @arg('-s', '--string', 'Something') string = ''
     }
     const opts = parse(new Options(), ['exec', '-s=foo bar'])
     expect(opts).toEqual({ string: 'foo bar' })
@@ -341,8 +305,7 @@ describe('parse()', () => {
 
   it('-s, --string: -s=', () => {
     class Options {
-      @arg('-s', '--string', 'Something')
-      string = 'xxx'
+      @arg('-s', '--string', 'Something') string = 'xxx'
     }
     const opts = parse(new Options(), ['exec', '-s='])
     expect(opts).toEqual({ string: '' })
@@ -350,8 +313,7 @@ describe('parse()', () => {
 
   it('--string: --string=', () => {
     class Options {
-      @arg('--string', 'Something')
-      string = 'xxx'
+      @arg('--string', 'Something') string = 'xxx'
     }
     const opts = parse(new Options(), ['exec', '--string='])
     expect(opts).toEqual({ string: '' })
@@ -359,8 +321,7 @@ describe('parse()', () => {
 
   it('--string: --string=foo', () => {
     class Options {
-      @arg('--string', 'Something')
-      string = 'xxx'
+      @arg('--string', 'Something') string = 'xxx'
     }
     const opts = parse(new Options(), ['exec', '--string=foo'])
     expect(opts).toEqual({ string: 'foo' })
@@ -368,8 +329,7 @@ describe('parse()', () => {
 
   it('--string: --string=foo bar', () => {
     class Options {
-      @arg('--string', 'Something')
-      string = 'xxx'
+      @arg('--string', 'Something') string = 'xxx'
     }
     const opts = parse(new Options(), ['exec', '--string=foo bar'])
     expect(opts).toEqual({ string: 'foo bar' })
@@ -377,8 +337,7 @@ describe('parse()', () => {
 
   it('--string[]: --string=foo --string=bar', () => {
     class Options {
-      @arg('--string', 'Something')
-      string: string[] = []
+      @arg('--string', 'Something') string: string[] = []
     }
     const opts = parse(new Options(), ['exec', '--string=foo', '--string=bar'])
     expect(opts).toEqual({ string: ['foo', 'bar'] })
@@ -386,8 +345,7 @@ describe('parse()', () => {
 
   it('--string[]: --string=foo --string=bar non-initialized', () => {
     class Options {
-      @arg('--string', 'Something')
-      string!: string[]
+      @arg('--string', 'Something') string!: string[]
     }
     const opts = parse(new Options(), ['exec', '--string=foo', '--string=bar'])
     expect(opts).toEqual({ string: ['foo', 'bar'] })
@@ -395,8 +353,7 @@ describe('parse()', () => {
 
   it('-c, --choices: --choices', () => {
     class Options {
-      @arg('-c', '--choices', 'Something', ['one', 'two'])
-      choices = 'xxx'
+      @arg('-c', '--choices', 'Something', ['one', 'two']) choices = 'xxx'
     }
     let error: AggregateError
     try {
@@ -411,8 +368,7 @@ describe('parse()', () => {
 
   it('-c, --choices: invalid', () => {
     class Options {
-      @arg('-c', '--choices', 'Something', ['one', 'two'])
-      choices = 'xxx'
+      @arg('-c', '--choices', 'Something', ['one', 'two']) choices = 'xxx'
     }
     let error: AggregateError
     try {
@@ -427,8 +383,7 @@ describe('parse()', () => {
 
   it('just text', () => {
     class Options {
-      @arg('Something')
-      arg = ''
+      @arg('Something') arg = ''
     }
     const opts = parse(new Options(), ['exec', 'foo'])
     expect(opts).toEqual({ arg: 'foo' })
@@ -436,8 +391,7 @@ describe('parse()', () => {
 
   it('<arg>: foo', () => {
     class Options {
-      @arg('<arg>', 'Something')
-      arg = ''
+      @arg('<arg>', 'Something') arg = ''
     }
     const opts = parse(new Options(), ['exec', 'foo'])
     expect(opts).toEqual({ arg: 'foo' })
@@ -445,8 +399,7 @@ describe('parse()', () => {
 
   it('<arg>: required', () => {
     class Options {
-      @arg('<arg>', 'Something')
-      arg!: string
+      @arg('<arg>', 'Something') arg!: string
     }
     let error: AggregateError
     try {
@@ -460,8 +413,7 @@ describe('parse()', () => {
 
   it('<arg>: foo bar', () => {
     class Options {
-      @arg('<arg>', 'Something')
-      arg = ''
+      @arg('<arg>', 'Something') arg = ''
     }
     const opts = parse(new Options(), ['exec', 'foo', 'bar'])
     expect(opts).toEqual({ arg: 'bar' })
@@ -469,8 +421,7 @@ describe('parse()', () => {
 
   it('<arg[]>: (none)', () => {
     class Options {
-      @arg('<arg>', 'Something')
-      arg = []
+      @arg('<arg>', 'Something') arg = []
     }
     const opts = parse(new Options(), ['exec'])
     expect(opts).toEqual({ arg: [] })
@@ -478,8 +429,7 @@ describe('parse()', () => {
 
   it('<arg[]>: foo', () => {
     class Options {
-      @arg('<arg>', 'Something')
-      arg = []
+      @arg('<arg>', 'Something') arg = []
     }
     const opts = parse(new Options(), ['exec', 'foo'])
     expect(opts).toEqual({ arg: ['foo'] })
@@ -487,8 +437,7 @@ describe('parse()', () => {
 
   it('<arg[def]>: foo', () => {
     class Options {
-      @arg('<arg>', 'Something')
-      arg = ['def']
+      @arg('<arg>', 'Something') arg = ['def']
     }
     const opts = parse(new Options(), ['exec', 'foo'])
     expect(opts).toEqual({ arg: ['def', 'foo'] })
@@ -496,8 +445,7 @@ describe('parse()', () => {
 
   it('<arg[]>: foo bar', () => {
     class Options {
-      @arg('<arg>', 'Something')
-      arg = []
+      @arg('<arg>', 'Something') arg = []
     }
     const opts = parse(new Options(), ['exec', 'foo', 'bar'])
     expect(opts).toEqual({ arg: ['foo', 'bar'] })
@@ -511,8 +459,7 @@ describe('parse()', () => {
 
   it('-- rest non existant should be ignored', () => {
     class Options {
-      @arg('<foo>', 'Foo')
-      foo = []
+      @arg('<foo>', 'Foo') foo = []
     }
     const opts = parse(new Options(), ['exec', 'foo', '--', 'bar'])
     expect(opts).toEqual({ foo: ['foo'] })
@@ -520,8 +467,7 @@ describe('parse()', () => {
 
   it('--: rest foo -- bar', () => {
     class Options {
-      @arg('--', 'Rest')
-      rest = []
+      @arg('--', 'Rest') rest = []
     }
     const opts = parse(new Options(), ['exec', 'foo', '--', 'bar'])
     expect(opts).toEqual({ rest: ['bar'] })
@@ -529,8 +475,7 @@ describe('parse()', () => {
 
   it('--: rest foo --', () => {
     class Options {
-      @arg('--', 'Rest')
-      rest = []
+      @arg('--', 'Rest') rest = []
     }
     const opts = parse(new Options(), ['exec', 'foo', '--'])
     expect(opts).toEqual({ rest: [] })
@@ -538,8 +483,7 @@ describe('parse()', () => {
 
   it('--: rest -- foo', () => {
     class Options {
-      @arg('--', 'Rest')
-      rest = []
+      @arg('--', 'Rest') rest = []
     }
     const opts = parse(new Options(), ['exec', '--', 'foo'])
     expect(opts).toEqual({ rest: ['foo'] })
@@ -561,26 +505,19 @@ describe('parse()', () => {
 
   it('--help output', () => {
     class Options {
-      @arg('<file>', 'Filename')
-      file = ''
+      @arg('<file>', 'Filename') file = ''
 
-      @arg('-f', '--flag', 'A flag')
-      flag = false
+      @arg('-f', '--flag', 'A flag') flag = false
 
-      @arg('-e', '--choices', 'Something', ['one', 'two'])
-      choices = 'xxx'
+      @arg('-e', '--choices', 'Something', ['one', 'two']) choices = 'xxx'
 
-      @arg('--long-choices', 'Long choices', ['blue', 'yellow'])
-      longchoices = 'xxx'
+      @arg('--long-choices', 'Long choices', ['blue', 'yellow']) longchoices = 'xxx'
 
-      @arg('--long', 'Long')
-      long = false
+      @arg('--long', 'Long') long = false
 
-      @arg('--string', 'String')
-      string = ''
+      @arg('--string', 'String') string = ''
 
-      @arg('--', '[rest]', 'Rest parameters')
-      rest = []
+      @arg('--', '[rest]', 'Rest parameters') rest = []
     }
     let error: Error
     try {
@@ -609,8 +546,7 @@ describe('parse()', () => {
 
   it('--help examples', () => {
     class Options {
-      @arg('-f', '--flag', 'A flag')
-      flag = false
+      @arg('-f', '--flag', 'A flag') flag = false
 
       static examples = {
         one: 'One example',
@@ -634,8 +570,7 @@ describe('parse()', () => {
 
   it('ignores non decorated args', () => {
     class Options {
-      @arg('-i', 'Include me')
-      include = true
+      @arg('-i', 'Include me') include = true
 
       ignore = 'me'
     }
@@ -654,8 +589,7 @@ describe('parse()', () => {
 describe('decarg(options)', () => {
   it('uses process.argv', () => {
     class Options {
-      @arg('-s', 'Something')
-      string = ''
+      @arg('-s', 'Something') string = ''
     }
     process.argv = ['', 'exec', '-s=foo']
     const opts = decarg(new Options())
@@ -666,8 +600,7 @@ describe('decarg(options)', () => {
 
   it('returns the options when successful', () => {
     class Options {
-      @arg('-s', 'Something')
-      string = ''
+      @arg('-s', 'Something') string = ''
     }
     const opts = decarg(new Options(), ['exec', '-s=foo'])
     expect(opts).toEqual({
@@ -677,8 +610,7 @@ describe('decarg(options)', () => {
 
   it('logs and exits on help', () => {
     class Options {
-      @arg('-s', 'Something')
-      string = ''
+      @arg('-s', 'Something') string = ''
     }
     let out = ''
     const log = (s: string) => (out += s)
@@ -690,8 +622,7 @@ describe('decarg(options)', () => {
 
   it('logs error and exits on error', () => {
     class Options {
-      @arg('-s', 'Something')
-      string = ''
+      @arg('-s', 'Something') string = ''
     }
     let out = ''
     const log = (s: string) => (out += s)

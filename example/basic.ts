@@ -1,26 +1,19 @@
 import { arg, decarg } from '../src'
 
 class Options {
-  @arg('<file> [<file>, ...]', 'Files to process')
-  file!: string[]
+  @arg('<file> [<file>, ...]', 'Files to process') file!: string[]
 
-  @arg('--', '[...rest]', 'The rest of the arguments')
-  passArgs = []
+  @arg('--', '[...rest]', 'The rest of the arguments') passArgs = []
 
-  @arg('-f', '--flag', 'Flag about something')
-  flag = false
+  @arg('-f', '--flag', 'Flag about something') flag = false
 
-  @arg('-c', '--count', 'How many times')
-  count = 42
+  @arg('-c', '--count', 'How many times') count = 42
 
-  @arg('-C', 'Choose color', ['blue', 'red', 'yellow'])
-  color = 'blue'
+  @arg('-C', 'Choose color', ['blue', 'red', 'yellow']) color = 'blue'
 
-  @arg('-s', '--string', 'Some string')
-  string = 'hmm'
+  @arg('-s', '--string', 'Some string') string = 'hmm'
 
-  @arg('--meh', 'Meh')
-  meh: string[] = []
+  @arg('--meh', 'Meh') meh: string[] = []
 
   static examples = {
     '-f foo': 'Convert foo by force',

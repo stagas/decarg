@@ -1,7 +1,7 @@
 import { parse } from './parse'
 
-export * from './errors'
 export { arg } from './arg'
+export * from './errors'
 export { parse }
 
 /**
@@ -17,7 +17,7 @@ export { parse }
 export const decarg = <T>(
   target: T,
   argv = process.argv.slice(1),
-  { exit = process.exit, log = console.error } = {}
+  { exit = process.exit, log = console.error } = {},
 ) => {
   try {
     return parse(target, argv)

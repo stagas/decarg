@@ -1,9 +1,0 @@
-toc:
-  - decarg
-  - parse
-  - name: Errors
-    children:
-      - OptionValidationError
-      - OptionExpectedValueError
-      - OptionInvalidValueError
-      - OptionHelpRequested
