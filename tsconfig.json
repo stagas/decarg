@@ -29,6 +29,7 @@
     "useDefineForClassFields": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "inlineSources": true,
@@ -41,7 +42,7 @@
     "incremental": true,
     "module": "commonjs",
     "target": "esnext",
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "strict": true
   }
 }
