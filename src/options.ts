@@ -113,7 +113,7 @@ export class Options<T> {
 
   constructor(target: T, exec: string) {
     this.target = target as T & { examples: Record<string, string> }
-    this.exec = path.basename(exec ?? '(command)')
+    this.exec = (exec?.includes('.') ? process.env.NODE_CLI_BIN_NAME : void 0) ?? path.basename(exec ?? '(command)')
 
     // gather decorated props from options object
     this.options = [

@@ -1,3 +1,4 @@
+// @env node
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { arg, decarg, parse } from '../src'
 
@@ -614,10 +615,13 @@ describe('decarg(options)', () => {
     }
     let out = ''
     const log = (s: string) => (out += s)
-    const exit = jest.fn() as any
+    let i = 0
+    const exit: any = () => {
+      i++
+    }
     decarg(new Options(), ['exec', '-h'], { exit, log })
     expect(out).toContain('Usage')
-    expect(exit).toHaveBeenCalledWith(1)
+    expect(i).toBe(1)
   })
 
   it('logs error and exits on error', () => {
@@ -626,10 +630,13 @@ describe('decarg(options)', () => {
     }
     let out = ''
     const log = (s: string) => (out += s)
-    const exit = jest.fn() as any
+    let i = 0
+    const exit: any = () => {
+      i++
+    }
     decarg(new Options(), ['exec', '-s'], { exit, log })
     expect(out).toContain('Usage')
     expect(out).toContain('Expected value')
-    expect(exit).toHaveBeenCalledWith(1)
+    expect(i).toBe(1)
   })
 })
