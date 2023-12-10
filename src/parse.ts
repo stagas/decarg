@@ -1,6 +1,6 @@
-import { OptionExpectedValueError, OptionHelpRequested } from './errors'
-import { Options } from './options'
-import { isDefault, isLong, split, strip } from './util'
+import { OptionExpectedValueError, OptionHelpRequested } from './errors.ts'
+import { Options } from './options.ts'
+import { isDefault, isLong, split, strip } from './util.ts'
 
 /**
  * Process an options object and throw errors so that they can be
@@ -14,7 +14,7 @@ import { isDefault, isLong, split, strip } from './util'
  * @returns The populated options object when successful, otherwise throws.
  */
 
-export const parse = <T>(target: T, argv = process.argv.slice(1)) => {
+export function parse<T extends object>(target: T, argv = process.argv.slice(1)) {
   const [[exec, ...args], rest] = split('--', argv)
 
   const options = new Options(target, exec)

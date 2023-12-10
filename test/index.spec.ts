@@ -1,6 +1,5 @@
 // @env node
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { arg, decarg, parse } from '../src'
+import { arg, decarg, parse } from '../src/index.ts'
 
 describe('parse()', () => {
   it('empty', () => {

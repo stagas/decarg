@@ -46,7 +46,7 @@ export class OptionInvalidValueError<T> extends OptionValidationError {
  *
  * Not an error per se, but thrown anyway when `--help` is passed in the arguments.
  */
-export class OptionHelpRequested<T> extends Error {
+export class OptionHelpRequested<T extends object> extends Error {
   constructor(options: Options<T>) {
     super(options.help())
     this.name = 'OptionHelpRequested'

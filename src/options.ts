@@ -1,7 +1,7 @@
 import * as path from 'path'
-import { Arg, getArg } from './arg'
-import { OptionExpectedValueError, OptionInvalidValueError, OptionValidationError } from './errors'
-import { isLong, strip } from './util'
+import { Arg, getArg } from './arg.ts'
+import { OptionExpectedValueError, OptionInvalidValueError, OptionValidationError } from './errors.ts'
+import { isLong, strip } from './util.ts'
 
 // help text spacings
 const left = 5
@@ -102,13 +102,13 @@ export class Option<T> {
   }
 }
 
-export class Options<T> {
+export class Options<T extends object> {
   target: T & { examples: Record<string, string> }
   exec: string
   map: Map<string, Option<T>>
   options: Option<T>[]
-  default?: Option<T>
-  rest?: Option<T>
+  default?: Option<T> | undefined
+  rest?: Option<T> | undefined
   errors: OptionValidationError[] = []
 
   constructor(target: T, exec: string) {

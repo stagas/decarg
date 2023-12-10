@@ -1,7 +1,13 @@
-export const isDefault = (arg: string) => arg.charAt(0) !== '-'
-export const isLong = (arg: string) => arg.slice(0, 2) === '--'
-export const strip = (arg: string) => arg.replace(/^-+/, '')
-export const split = (del: string, s: string | string[]) => {
+export function isDefault(arg: string) {
+  return arg.charAt(0) !== '-'
+}
+export function isLong(arg: string) {
+  return arg.slice(0, 2) === '--'
+}
+export function strip(arg: string) {
+  return arg.replace(/^-+/, '')
+}
+export function split(del: string, s: string | string[]) {
   const index = s.indexOf(del)
   let pre, post
   if (index >= 0) {
